@@ -1,6 +1,5 @@
 $(function() {
   const convertQuestionToHTML = item => {
-    console.log("item", item);
     let question = item.question;
     let options = item.options;
     let answer = item.answer;
@@ -17,6 +16,7 @@ $(function() {
     let sentence = title + optionselection;
     return `<div class="total">` + sentence + "</div>";
   };
+  let total = 0;
 
   $("button").on("click", function(e) {
     e.preventDefault();
@@ -39,8 +39,8 @@ $(function() {
     };
 
     const newQuestionHTML = convertQuestionToHTML(newQuestion);
-    $("form").append(newQuestionHTML);
-    let total = 0;
+    $("section").append(newQuestionHTML);
+
     $("p").on("click", function() {
       if ($(this).attr("answer") === $(this).text()) {
         const bottomText = `<h3>${$(this).text()} is the correct answer<h3>`;
@@ -49,7 +49,8 @@ $(function() {
           .append(bottomText);
         $(this).addClass("green");
         $("h3").addClass("green");
-        total++;
+        total = total + 1;
+        console.log(total);
       } else {
         $(this).addClass("red");
         const bottomText = `<h3>${$(this).attr(
@@ -64,6 +65,7 @@ $(function() {
         .siblings()
         .off("click");
       $(this).off("click");
+      $("#total").html("");
       $("#total").html(`${total} / ${$(".total").length}`);
     });
   });
