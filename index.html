@@ -7,30 +7,45 @@
     <title>Quiz Time!</title>
   </head>
   <style>
-    .red{color:#ff0000}
-    .green{color:rgb(67, 211, 67)}
+    .red {
+      color: #ff0000;
+    }
+
+    .green {
+      color: rgb(67, 211, 67);
+    }
   </style>
+
   <body>
     <form action="#" method="GET">
-     <label for="question">Question:</label>
-      <input type="text" placeholder="E.g (Are you Alright?)" id="question">
+      <label for="question">Question:</label>
+      <input
+        type="text"
+        placeholder="E.g (Are you Alright?)"
+        id="question"
+        required
+      />
 
-    <label for="option">Options</label>
-      <input type="text" placeholder="E.g.(Yep)" id="option1">
-      <input type="text" placeholder="E.g.(Nope)" id="option2">
-      <input type="text" placeholder="E.g.(QQ)" id="option3">
-      <input type="text" placeholder="E.g(What's life?)" id="option4">
+      <label for="option">Options</label>
+      <input type="text" placeholder="E.g.(Yep)" id="option1" required />
+      <input type="text" placeholder="E.g.(Nope)" id="option2" required />
+      <input type="text" placeholder="E.g.(QQ)" id="option3" required />
+      <input
+        type="text"
+        placeholder="E.g(What's life?)"
+        id="option4"
+        required
+      />
 
-    <label for="input">Answer</label>
-      <input type="text" placeholder="E.g.(What's life)" id="answer">
+      <label for="input">Answer</label>
+      <input type="text" placeholder="E.g.(What's life)" id="answer" required />
 
-    <button>Add Question</button>
+      <button>Add Question</button>
     </form>
     <section></section>
     <h2 id="total"></h2>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.core.js"></script>
-    
+    <script src="script.js"></script>
   </body>
 </html>
