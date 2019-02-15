@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Quiz Generator</h1>
+
+    <form>
+      <label for="question">Question:</label>
+      <input id="question" type="text" name="question" required />
+      <br />
+
+      <label for="option1">Option 1:</label>
+      <input id="option1" type="text" name="option" required />
+      <input
+        id="correctOption1"
+        type="radio"
+        name="correctOption"
+        value="option1"
+        required
+      />
+      <br />
+
+      <label for="option2">Option 2:</label>
+      <input id="option2" type="text" name="option" required />
+      <input
+        id="correctOption2"
+        type="radio"
+        name="correctOption"
+        value="option2"
+      />
+      <br />
+
+      <label for="option3">Option 3:</label>
+      <input id="option3" type="text" name="option" required />
+      <input
+        id="correctOption3"
+        type="radio"
+        name="correctOption"
+        value="option3"
+      />
+      <br />
+
+      <label for="option4">Option 4:</label>
+      <input id="option4" type="text" name="option" required />
+      <input
+        id="correctOption4"
+        type="radio"
+        name="correctOption"
+        value="option4"
+      />
+      <br />
+
+      <button id="submit">Submit</button>
+    </form>
+    <section></section>
+
+    <script type="text/javascript">
+      const renderQuestion = question => {
+        return question;
+      };
+
+      let printHTML = newQuestion => {
+        let question = newQuestion.question;
+        let option = newQuestion.option;
+        let optionMore = option
+          .map(item => {
+            let itemValue = item.value;
+            return `<p>${itemValue}</p>`;
+          })
+          .join("");
+        let printQuestion = `<h2>${question}</h2>`;
+        let sentence = printQuestion + optionMore;
+        console.log(sentence);
+        $("section").append(sentence);
+      };
+
+      $(function() {
+        $("#submit").click(event => {
+          event.preventDefault();
+
+          // GET DATA FROM DOM
+          const question = $("#question").val();
+          const option1 = $("#option1").val();
+          const option2 = $("#option2").val();
+          const option3 = $("#option3").val();
+          const option4 = $("#option4").val();
+          const newQuestion = {
+            question: question,
+            option: [
+              { id: 1, value: option1 },
+              { id: 2, value: option2 },
+              { id: 3, value: option3 },
+              { id: 4, value: option4 }
+            ]
+          };
+          console.log(newQuestion);
+          printHTML(newQuestion);
+
+          // Get the the correct input id from the checked radio button value,
+          const correctOptionId = $(
+            `input[name="correctOption"]:checked`
+          ).val();
+          console.log(correctOptionId);
+          // checked value of radio
+
+          // Get all the option input elements by name
+          const optionElements = $('input[name="option"]');
+
+          // FORMAT DATA
+
+          // Map through all the option inputs
+          // Compare the correct input id with the current input id to determine if it is correct
+          const options = optionElements.map((index, element) => ({
+            value: element.value,
+            isCorrect: element.id == correctOptionId
+          }));
+
+          // const newQuestion = {
+          // 	question,
+          // 	options
+          // };
+
+          // GENERATE HTML
+
+          const questionHTML = renderQuestion(newQuestion);
+
+          console.log("options", options);
+        });
+      });
+    </script>
+  </body>
+</html>
