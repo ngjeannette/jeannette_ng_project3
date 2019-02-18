@@ -3,135 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="stylequiz.css">
+
   </head>
-
   <body>
-    <h1>Quiz Generator</h1>
+    <header>
+    <div class="container">
 
-    <form>
-      <label for="question">Question:</label>
-      <input id="question" type="text" name="question" required />
-      <br />
+    <form id="form">
+        <h1>Quiz Generator</h1>
 
-      <label for="option1">Option 1:</label>
-      <input id="option1" type="text" name="option" required />
-      <input
-        id="correctOption1"
-        type="radio"
-        name="correctOption"
-        value="option1"
-        required
-      />
-      <br />
+      <label for="question"
+        >Question: <input id="question" type="text" name="question" placeholder="1+1" required
+      /></label>
 
-      <label for="option2">Option 2:</label>
-      <input id="option2" type="text" name="option" required />
-      <input
-        id="correctOption2"
-        type="radio"
-        name="correctOption"
-        value="option2"
-      />
-      <br />
+      <label for="correctOption1" class="selection">
+        <label for="option1">Option 1:</label>
+        <input id="option1" type="text" name="option" placeholder="1" required/>
+        <input
+          id="correctOption1"
+          type="radio"
+          name="correctOption"
+          value="option1"
+      /></label>
 
-      <label for="option3">Option 3:</label>
-      <input id="option3" type="text" name="option" required />
-      <input
-        id="correctOption3"
-        type="radio"
-        name="correctOption"
-        value="option3"
-      />
-      <br />
+      <label for="correctOption2" class="selection">
+        <label for="option2">Option 2:</label>
+        <input id="option2" type="text" name="option" placeholder="2" required/>
+        <input
+          id="correctOption2"
+          type="radio"
+          name="correctOption"
+          value="option2"
+      /></label>
+      <label for="correctOption3" class="selection">
+        <label for="option3">Option 3:</label>
+        <input id="option3" type="text" name="option" placeholder="3"/>
+        <input
+          id="correctOption3"
+          type="radio"
+          name="correctOption"
+          value="option3"
+      /></label>
 
-      <label for="option4">Option 4:</label>
-      <input id="option4" type="text" name="option" required />
-      <input
-        id="correctOption4"
-        type="radio"
-        name="correctOption"
-        value="option4"
-      />
-      <br />
+      <label for="correctOption4" class="selection">
+        <label for="option4">Option 4:</label>
+        <input id="option4" type="text" name="option" placeholder="4"/>
+        <input
+          id="correctOption4"
+          type="radio"
+          name="correctOption"
+          value="option4"
+      /></label>
 
-      <button id="submit">Submit</button>
+      <button id="submit" class="cta">Start Game</button>
     </form>
+  </div>
+</header>
     <section></section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script type="text/javascript">
-      const renderQuestion = question => {
-        return question;
-      };
-
-      let printHTML = newQuestion => {
-        let question = newQuestion.question;
-        let option = newQuestion.option;
-        let optionMore = option
-          .map(item => {
-            let itemValue = item.value;
-            return `<p>${itemValue}</p>`;
-          })
-          .join("");
-        let printQuestion = `<h2>${question}</h2>`;
-        let sentence = printQuestion + optionMore;
-        console.log(sentence);
-        $("section").append(sentence);
-      };
-
-      $(function() {
-        $("#submit").click(event => {
-          event.preventDefault();
-
-          // GET DATA FROM DOM
-          const question = $("#question").val();
-          const option1 = $("#option1").val();
-          const option2 = $("#option2").val();
-          const option3 = $("#option3").val();
-          const option4 = $("#option4").val();
-          const newQuestion = {
-            question: question,
-            option: [
-              { id: 1, value: option1 },
-              { id: 2, value: option2 },
-              { id: 3, value: option3 },
-              { id: 4, value: option4 }
-            ]
-          };
-          console.log(newQuestion);
-          printHTML(newQuestion);
-
-          // Get the the correct input id from the checked radio button value,
-          const correctOptionId = $(
-            `input[name="correctOption"]:checked`
-          ).val();
-          console.log(correctOptionId);
-          // checked value of radio
-
-          // Get all the option input elements by name
-          const optionElements = $('input[name="option"]');
-
-          // FORMAT DATA
-
-          // Map through all the option inputs
-          // Compare the correct input id with the current input id to determine if it is correct
-          const options = optionElements.map((index, element) => ({
-            value: element.value,
-            isCorrect: element.id == correctOptionId
-          }));
-
-          // const newQuestion = {
-          // 	question,
-          // 	options
-          // };
-
-          // GENERATE HTML
-
-          const questionHTML = renderQuestion(newQuestion);
-
-          console.log("options", options);
-        });
-      });
-    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="quiz.js"></script>
   </body>
+ 
 </html>

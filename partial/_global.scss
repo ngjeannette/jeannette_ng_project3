@@ -1,0 +1,35 @@
+body{
+
+
+    font-family: 'Rubik', sans-serif;
+
+
+}
+h1,h2,h3{
+    margin:0;
+}
+h1{
+    font-size:50px;
+}
+
+
+.cta{
+    background: #FF7733;
+    width:139px;
+    margin-top:24px;
+
+  }
+.cta-2{
+    background: #FF7733;
+    width:139px;
+    margin-top:24px;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%)
+  }
+
+  .container{
+    max-width:1280px;
+    margin: 0 auto;
+    width:80%;
+  }

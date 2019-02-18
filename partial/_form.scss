@@ -1,0 +1,33 @@
+header{
+  background:#43AA8B;
+  min-height:100vh;
+  display: flex;
+  .container{
+    max-width:1280px;
+    margin: 0 auto;
+    width:80%;
+    align-self: center;
+ 
+  }
+}    
+    
+    #form {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      max-width:480px;
+      margin: auto;
+    }
+
+    .hovercolor {
+      background: #8BBF9F;
+    }
+    .selectcolor {
+      background: #187C5E;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    // input[name="correctOption"] {
+    //   display: none;
+    // }
