@@ -10,7 +10,7 @@ h2{
 h3{
     font-size:25px;
 }
-.alloptions{
+.all-options{
     display:flex;
     flex-wrap:wrap;
     justify-content: space-between;
@@ -20,6 +20,7 @@ h3{
     width:45%;
     color:white;
     font-size:28px;
+    cursor:pointer;
 }
 .option:nth-of-type(1),
 .option:nth-of-type(2){
@@ -45,7 +46,7 @@ h3{
 
 .question{
     display: flex;
-    height: 100vh;
+    height: 50vh;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
@@ -64,9 +65,23 @@ h3{
     }
 }
 
-#resultContainer{
-    min-height:100vh;
+#result-container{
+    min-height:60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+@media(max-width:350px){
+    #form{
+    label{
+        height:80px;
+        padding:9px 4px;
+    }
+        label[for=question]{
+        padding-left: 4px;
+    }
+ 
+}
+}
+

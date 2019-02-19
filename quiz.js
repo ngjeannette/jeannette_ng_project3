@@ -1,39 +1,22 @@
-$(function () {
+$(function() {
   $(".selection").hover(
-    function () {
+    function() {
       if ($(this).find("#confirmed").length === 0) {
         $(this)
           .append($("<span id='hint'>Please select answer</span>"))
-          .addClass("hovercolor")
+          .addClass("hover-color")
           .siblings()
-          .removeClass("hovercolor");
+          .removeClass("hover-color");
       }
     },
-    function () {
+    function() {
       $(this)
         .find("#hint")
         .remove();
-      $(this).removeClass("hovercolor");
+      $(this).removeClass("hover-color");
     }
   );
-  $(".selection").focus(
-    function () {
-      if ($(this).find("#confirmed").length === 0) {
-        $(this)
-          .append($("<span id='hint'>Please select answer</span>"))
-          .addClass("hovercolor")
-          .siblings()
-          .removeClass("hovercolor");
-      }
-    },
-    function () {
-      $(this)
-        .find("#hint")
-        .remove();
-      $(this).removeClass("hovercolor");
-    }
-  );
-  $(".selection").on("click", function () {
+  $(".selection").on("click", function() {
     $(this)
       .find("#hint")
       .remove();
@@ -44,14 +27,13 @@ $(function () {
     if ($(this).find("#confirmed").length === 0) {
       $(this)
         .append($("<span id='confirmed'>Confirmed answer</span>"))
-        .addClass("selectcolor")
+        .addClass("select-color")
         .siblings()
-        .removeClass("selectcolor");
+        .removeClass("select-color");
     }
   });
 
   const renderQuestion = (newQuestion, questionIndex) => {
-
     const question = newQuestion.question;
     const questionId = `question-${questionIndex}`;
     const answer = newQuestion.answer;
@@ -71,18 +53,17 @@ $(function () {
     let titleHTML = `<h2>${question}</h2>`;
 
     let answerHTML = `<h3 id="${questionId}-answer" style="visibility:hidden;color:green;">${answer} is the correct answer</h3>`;
-    let questionHTML = `<div class="question" id="${questionId}" question-number="${questionIndex}">${titleHTML}<div class="alloptions">${optionsHTML}</div>${answerHTML}<button id="answer-${questionIndex}-submit" class="cta-2">Submit Answer</button></div>`;
+    let questionHTML = `<div class="question" id="${questionId}" question-number="${questionIndex}">${titleHTML}<div class="all-options">${optionsHTML}</div>${answerHTML}<button id="answer-${questionIndex}-submit" class="cta-2">Submit Answer</button></div>`;
     return questionHTML;
   };
 
   const renderQuiz = questions => {
     const questionsHTML = questions.map(renderQuestion).join("");
     const quizHTML = `<div class="container">
-    <form id="quiz">${questionsHTML}<div id="resultContainer"><h2 id="result"></h2><button id="startAgain" class="cta-2">Start Again</button></div></form></div>`;
+    <form id="quiz">${questionsHTML}<div id="result-container"><h2 id="result"></h2><button id="startAgain" class="cta-2">Make a new quiz</button></div></form></div>`;
     return quizHTML;
   };
-  $("section").on("click", "#startAgain", function () {
-
+  $("section").on("click", "#startAgain", function() {
     questions = [];
     $(this)
       .parents("form")
@@ -156,7 +137,6 @@ $(function () {
   const getAnswerSubmitHandler = (questions, questionIndex) => event => {
     event.preventDefault();
 
-
     markQuestion(questionIndex);
     updateTotal(questions);
   };
@@ -169,11 +149,17 @@ $(function () {
   };
 
   let questions = [];
-
-  $("#form").on("submit", function (e) {
-
+  $("#start-game").on("click", function(e) {
+    e.preventDefault;
+    $("html, body").animate(
+      {
+        scrollTop: $("#section").offset().top
+      },
+      1500
+    );
+  });
+  $("#form").on("submit", function(e) {
     e.preventDefault();
-    $("html, body").animate({ scrollTop: $('section').offset().top }, 1000);
     // GET DATA FROM DOM
 
     // Get question value
@@ -210,11 +196,11 @@ $(function () {
     // GENERATE HTML
     renderAndAppendQuiz(questions);
 
-    $(".option").click(function (e) {
-
-      $(this).addClass("active")
-      $(this).siblings().removeClass('active')
-
+    $(".option").click(function(e) {
+      $(this).addClass("active");
+      $(this)
+        .siblings()
+        .removeClass("active");
 
       const questionIndex = $(this)
         .parent()
@@ -224,6 +210,6 @@ $(function () {
       // Set checked prop to true
       input.prop("checked", true);
     });
-    $(this)[0].reset()
+    $(this)[0].reset();
   });
 });
