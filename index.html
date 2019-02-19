@@ -2,54 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>Quiz Generator</title>
 
-<link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Rubik:400,700"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="stylequiz.css">
-
+    <link rel="stylesheet" href="stylequiz.css" />
   </head>
   <body>
     <header>
-    <div class="container">
+      <div class="container">
+        <form id="form">
+          <h1>Quiz Generator</h1>
 
-    <form id="form">
-        <h1>Quiz Generator</h1>
+          <label for="question"
+            >Question:
+            <input
+              id="question"
+              type="text"
+              name="question"
+              placeholder="1+1"
+              required
+          /></label>
 
-      <label for="question"
-        >Question: <input id="question" type="text" name="question" placeholder="1+1" required
-      /></label>
+          <label for="correctOption1" class="selection"
+            ><label for="option1">Option 1:</label
+            ><input
+              id="option1"
+              type="text"
+              name="option"
+              placeholder="1"
+              required/><input
+              id="correctOption1"
+              type="radio"
+              name="correctOption"
+              value="option1"
+          /></label>
+          <label for="correctOption2" class="selection"
+            ><label for="option2">Option 2:</label
+            ><input
+              id="option2"
+              type="text"
+              name="option"
+              placeholder="2"
+              required/><input
+              id="correctOption2"
+              type="radio"
+              name="correctOption"
+              value="option2"
+          /></label>
+          <label for="correctOption3" class="selection"
+            ><label for="option3">Option 3:</label
+            ><input
+              id="option3"
+              type="text"
+              name="option"
+              placeholder="3"/><input
+              id="correctOption3"
+              type="radio"
+              name="correctOption"
+              value="option3"
+          /></label>
+          <label for="correctOption4" class="selection"
+            ><label for="option4">Option 4:</label
+            ><input
+              id="option4"
+              type="text"
+              name="option"
+              placeholder="4"/><input
+              id="correctOption4"
+              type="radio"
+              name="correctOption"
+              value="option4"
+          /></label>
 
-      <label for="correctOption1" class="selection"><label for="option1">Option 1:</label><input id="option1" type="text" name="option" placeholder="1" required/><input
-          id="correctOption1"
-          type="radio"
-          name="correctOption"
-          value="option1"
-      /></label>
-      <label for="correctOption2" class="selection"><label for="option2">Option 2:</label><input id="option2" type="text" name="option" placeholder="2" required/><input
-          id="correctOption2"
-          type="radio"
-          name="correctOption"
-          value="option2"
-      /></label>
-      <label for="correctOption3" class="selection"><label for="option3">Option 3:</label><input id="option3" type="text" name="option" placeholder="3"/><input
-          id="correctOption3"
-          type="radio"
-          name="correctOption"
-          value="option3"
-      /></label>
-      <label for="correctOption4" class="selection"><label for="option4">Option 4:</label><input id="option4" type="text" name="option" placeholder="4"/><input
-          id="correctOption4"
-          type="radio"
-          name="correctOption"
-          value="option4"
-      /></label>
-
-      <button id="submit" class="cta" type="submit">Add Question</button>
-      <button id="start-game" class="cta" type="button">Start Game</button>
-    </form>
-  </div>
-</header>
+          <button id="submit" class="cta" type="submit">Add Question</button>
+          <button id="start-game" class="cta" type="button">Start Game</button>
+        </form>
+      </div>
+    </header>
     <section id="section"></section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -60,5 +93,4 @@
     ></script>
     <script src="quiz.js"></script>
   </body>
- 
 </html>
